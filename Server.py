@@ -19,16 +19,15 @@ def handle_client(client):
             message = client.recv(1024)
             broadcast(message)
         except:
-            index = clients.index
+            index = clients.index(client)
             clients.remove(client)
             client.close()
             alias = aliases[index]
-            broadcast(f'{alias} has left!'.encode)
-            ('utf-8')
+            broadcast(f'{alias} has left!'.encode('utf-8'))
             aliases.remove(alias)
 
 
-def recieve():
+def receive():
     while True:
         print("server is on and ready")
         client, address = server.accept()
@@ -43,3 +42,5 @@ def recieve():
 
         thread = threading.Thread(target=handle_client, args=(client,))
         thread.start()
+
+receive()
