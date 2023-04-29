@@ -1,27 +1,22 @@
 import threading
 import socket
 
-
+client = None
+alias = None
 connected = False
 disconnect_flag = False
-alias = input('choose alias>>>>')
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('127.0.0.1',59000))
-
 def menu():
-    print("1. Connect to the server")
-    print("2. Disconnect from the server")
-    print("3. Send a message to the server")
-    print("4. Quit")
-    choice = input("Choose an option: ")
-    return choice
+    choice = input("Press 1 to Connect to the server ")
+    if choice == '1':
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        alias = input('choose alias>>>>')
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client.connect(('127.0.0.1',59000))
+    else:
+        print('ERROR')
 
-def connect():
-    ip = input("Enter the server's IP address: ")
-    port = input("Enter the server's port number: ")
-    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client.connect((ip, int(port)))
-    print("Connected to the server.")
+    return (client,alias)
+
 
 def disconnect():
     global client, connected, disconnect_flag
@@ -75,7 +70,9 @@ def client_send():
             client.send(message.encode('utf-8'))
         # message = f'{alias}:{input("")}'
         # client.send(message.encode('utf-8'))
-
+client_info = menu()
+client = client_info[0]
+alias = client_info[1]
 receive_thread = threading.Thread(target=client_receive)
 receive_thread.start()
 

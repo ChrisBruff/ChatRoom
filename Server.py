@@ -12,6 +12,7 @@ aliases = []
 
 def broadcast(message):
     print(f'Sending message: {message}')
+
     for client in clients:
         client.send(message)
 
@@ -60,8 +61,6 @@ def receive():
         print(f'The alias of the current client {alias}'.encode('utf-8'))
         broadcast(f'{alias} has connected'.encode('utf-8'))
         client.send("You have connected".encode('utf-8'))
-        if client.recv(1024) == '@server_disc':
-            print('hi')
         thread = threading.Thread(target=handle_client, args=(client,))
         thread.start()
 
