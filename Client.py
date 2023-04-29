@@ -16,17 +16,30 @@ def client_receive():
             else:
                 print(message)
         except:
-            print('Error!')
-            client.close()
-            break
+            message = input('')
+            if message == '\quit':
+                print('goodbye!')
+                client.close()
+            else:
+                print('Error!')
+                client.close()
+                break
 
 def client_send():
     while True:
-        message = f'{alias}:{input("")}'
-        client.send(message.encode('utf-8'))
+        message = input('')
+        if message == '\quit':
+            client.send('quit'.encode('utf-8'))
+            client.close()
+            break
+        else:
+            message = f'{alias}: {message}'
+            client.send(message.encode('utf-8'))
+        # message = f'{alias}:{input("")}'
+        # client.send(message.encode('utf-8'))
 
-recive_thread = threading.Thread(target=client_receive)
-recive_thread.start()
+receive_thread = threading.Thread(target=client_receive)
+receive_thread.start()
 
 send_thread = threading.Thread(target=client_send)
 send_thread.start()
