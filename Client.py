@@ -1,21 +1,24 @@
 import threading
 import socket
+import sys
 
 client = None
 alias = None
 connected = False
 disconnect_flag = False
 def menu():
-    choice = input("Press 1 to Connect to the server ")
+    choice = input("Press 1 to Connect to the server or 2 to exit ")
     if choice == '1':
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         alias = input('choose alias>>>>')
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client.connect(('127.0.0.1',59000))
+        return (client,alias)
+    elif choice =='2':
+        sys.exit(1)
     else:
         print('ERROR')
 
-    return (client,alias)
 
 
 def disconnect():
