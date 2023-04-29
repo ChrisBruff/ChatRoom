@@ -1,4 +1,4 @@
-**Documentation for the Client Code:**
+#**Documentation for the Client Code:**
 
 The client code is written in Python and allows the user to connect to a server and participate in a chat room. The user will be prompted to enter an alias, which will be used to identify their messages. After entering an alias, the user can choose to connect to the server or exit the program. If the user chooses to connect, a socket will be created to connect to the server, and the user will be able to send and receive messages in the chat room.
 
@@ -34,7 +34,7 @@ To disconnect from the server, type "\quit" into the console and press enter.
 To exit the program, type "2" into the console when prompted.
 
 
-**Server Documentation**
+#**Server Documentation**
 The server code creates a socket that listens for incoming client connections. Once a connection is established, the server adds the client to a list of active clients and assigns the client a unique alias. The server broadcasts messages to all clients in the list, including when a client connects or disconnects.
 
 **Server User Guide**
