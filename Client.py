@@ -15,15 +15,14 @@ def client_receive():
                 client.send(alias.encode('utf-8'))
             else:
                 print(message)
-        except:
+        except ConnectionResetError:
+            print('Error!')
+            client.close()
+            break
             message = input('')
-            if message == '\quit':
-                print('goodbye!')
-                client.close()
-            else:
-                print('Error!')
-                client.close()
-                break
+        except ConnectionAbortedError:
+            print('Disconnected!')
+            break
 
 def client_send():
     while True:
