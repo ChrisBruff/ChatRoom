@@ -48,15 +48,13 @@ Run the server code by executing the command python server.py.
 
 The server will display the message "server is on and ready" to indicate that it is running and ready to accept incoming client connections.
 
-Clients can connect to the server by specifying the IP address and port number in their client code.
+Once connected, the clients will select a unique alias of which will be displayed in the server output.
 
-Once connected, the server will assign a unique alias to each client and display the alias in the server output.
-
-Clients can send messages to the server by calling the send() method on their socket object.
+Clients can send messages directly from the bash once connected
 
 The server will broadcast messages to all connected clients by calling the broadcast() function.
 
-Clients can disconnect from the server by sending the message "quit" to the server.
+Clients can disconnect from the server by sending the message "\quit" to the server.
 
 Note: The server code is intended to run continuously until manually stopped by the user. To stop the server, press ctrl + c in the terminal or command prompt where the server is running.
 
