@@ -1,4 +1,4 @@
-# **Client Documentation:**
+# **Client Documentation**
 
 The client code is written in Python and allows the user to connect to a server and participate in a chat room. The user will be prompted to enter an alias, which will be used to identify their messages. After entering an alias, the user can choose to connect to the server or exit the program. If the user chooses to connect, a socket will be created to connect to the server, and the user will be able to send and receive messages in the chat room.
 
